@@ -71,6 +71,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040528552C5DA9C200B77C1A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		040528562C5DA9C600B77C1A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		04E3AD612C5D99C30087907A = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +108,8 @@
 		04E3AD6C2C5D99C30087907A /* UnsplashPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				040528562C5DA9C600B77C1A /* ViewModel */,
+				040528552C5DA9C200B77C1A /* Model */,
 				04E3AD6D2C5D99C40087907A /* UnsplashPhotosApp.swift */,
 				04E3AD6F2C5D99C40087907A /* ContentView.swift */,
 				04E3AD712C5D99C50087907A /* Assets.xcassets */,
