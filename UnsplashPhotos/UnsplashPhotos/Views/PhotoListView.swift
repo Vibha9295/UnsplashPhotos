@@ -4,43 +4,48 @@
 //
 //  Created by Mac on 02/08/24.
 //
+import SwiftUI
 
-import Foundation
 import SwiftUI
 
 struct PhotoListView: View {
     @StateObject private var viewModel = PhotoListViewModel()
     @State private var searchText = ""
-    
+
     var body: some View {
         NavigationView {
             TabView {
-                // Search Tab
                 VStack {
                     SearchBar(text: $searchText, onSearch: searchPhotos)
                     
-                    if viewModel.isLoading {
+                    if viewModel.isLoading && viewModel.photos.isEmpty {
                         ProgressView("Loading...")
                             .progressViewStyle(CircularProgressViewStyle())
                             .scaleEffect(1.5, anchor: .center)
                             .padding()
                     }
                     
-                    List(viewModel.photos) { photo in
-                        NavigationLink(destination: PhotoDetailView(photo: photo, likedPhotos: $viewModel.likedPhotos)) {
-                            PhotoRowView(photo: photo, likedPhotos: $viewModel.likedPhotos, isInLikedList: false)
+                    List {
+                        ForEach(viewModel.photos) { photo in
+                            NavigationLink(destination: PhotoDetailView(photo: photo, likedPhotos: $viewModel.likedPhotos)) {
+                                PhotoRowView(photo: photo, likedPhotos: $viewModel.likedPhotos, isInLikedList: false)
+                            }
+                            .listRowBackground(Color.clear)
+                            .onAppear {
+                                if photo.id == viewModel.photos.last?.id {
+                                    viewModel.fetchNextPage()
+                                }
+                            }
                         }
-                        .listRowBackground(Color.clear)
+                        
+                        if viewModel.isLoading && !viewModel.photos.isEmpty {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding()
+                        }
                     }
                     .listStyle(PlainListStyle())
-                    .refreshable {
-                        viewModel.fetchPhotos(query: searchText)
-                    }
-                    .onChange(of: searchText) { newValue in
-                        if newValue.isEmpty {
-                            viewModel.fetchDefaultPhotos()
-                        }
-                    }
                 }
                 .navigationTitle("Photos")
                 .tabItem {
@@ -52,7 +57,6 @@ struct PhotoListView: View {
                     }
                 }
                 
-                // Liked Photos Tab
                 VStack(alignment: .leading) {
                     Text("Likes")
                         .font(.largeTitle)

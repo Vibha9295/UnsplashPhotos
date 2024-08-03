@@ -29,7 +29,7 @@ struct PhotoRowView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: 200)
                 .cornerRadius(5)
-                .padding(5) // Apply padding evenly
+                .padding(5)
                 
                 HStack {
                     Text(photo.user.name)
@@ -45,7 +45,7 @@ struct PhotoRowView: View {
                     }) {
                         HStack {
                             Image(systemName: isLiked ? "heart.fill" : "heart")
-                                .foregroundColor(isLiked ? .red : .red) // Update color based on like state
+                                .foregroundColor(isLiked ? .red : .red) 
                                 .padding(8)
                                 .background(Color.black.opacity(0.7))
                                 .clipShape(Circle())
