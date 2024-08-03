@@ -13,7 +13,7 @@ struct SplashScreenView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text("Unsplash Photos")
+            Text("UNSPLASH PHOTOS")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding()
