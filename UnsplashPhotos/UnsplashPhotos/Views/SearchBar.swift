@@ -21,6 +21,8 @@ struct SearchBar: View {
                     }
                 }
             })
+            .accessibilityIdentifier("SearchField") // Ensure this identifier is used in tests
+            
             .padding(8)
             .background(Color(.systemGray6))
             .cornerRadius(10)
@@ -34,6 +36,8 @@ struct SearchBar: View {
                     .padding(8)
                     .foregroundColor(.gray)
             }
+            .accessibilityIdentifier("ClearButton") // Added identifier for clear button
+
         }
         .padding(.top)
     }

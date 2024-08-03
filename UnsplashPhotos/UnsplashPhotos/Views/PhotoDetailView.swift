@@ -51,7 +51,8 @@ struct PhotoDetailView: View {
                                 .background(Color.black.opacity(0.7))
                                 .clipShape(Circle())
                         }
-                    }
+                    }.accessibilityIdentifier("LikeButton")
+
                 }
                 .padding(15)
             }
