@@ -58,7 +58,7 @@ class PhotoListViewModel: ObservableObject {
                     self?.errorMessage = ErrorMessage(message: error.localizedDescription)
                 }
             } receiveValue: { [weak self] photos in
-                print("API Call Succeeded - Photos Count: \(photos.count)") 
+                print("API Call Succeeded - Photos Count: \(photos.count)")
                 if page == 1 {
                     self?.photos = photos
                 } else {

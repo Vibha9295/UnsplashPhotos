@@ -30,7 +30,7 @@ class UnsplashPhotosUITests: XCTestCase {
         
         searchField.tap()
         searchField.typeText("nature")
-        
+            
         let firstPhoto = app.images.element(boundBy: 0)
         let existsPredicate = NSPredicate(format: "exists == true")
         expectation(for: existsPredicate, evaluatedWith: firstPhoto, handler: nil)

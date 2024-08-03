@@ -45,7 +45,7 @@ struct PhotoRowView: View {
                     }) {
                         HStack {
                             Image(systemName: isLiked ? "heart.fill" : "heart")
-                                .foregroundColor(isLiked ? .red : .red) 
+                                .foregroundColor(isLiked ? .red : .red)
                                 .padding(8)
                                 .background(Color.black.opacity(0.7))
                                 .clipShape(Circle())

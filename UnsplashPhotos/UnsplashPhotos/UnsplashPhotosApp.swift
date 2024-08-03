@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct UnsplashPhotosApp: App {
+    @State private var isActive = true
+    
     var body: some Scene {
         WindowGroup {
-            PhotoListView()
+            if isActive {
+                SplashScreenView(isActive: $isActive)
+            } else {
+                PhotoListView()
+            }
         }
     }
 }
